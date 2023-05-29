@@ -1,3 +1,5 @@
+.vs/
+
 # Prerequisites
 *.d
 
@@ -31,6 +33,6 @@
 *.out
 *.app
 
-.vs
 bin
+obj
 intermediates
