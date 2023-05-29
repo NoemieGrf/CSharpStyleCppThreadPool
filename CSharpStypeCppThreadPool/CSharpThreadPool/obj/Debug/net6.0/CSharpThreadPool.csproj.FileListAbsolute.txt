@@ -1,0 +1,15 @@
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\bin\Debug\net6.0\CSharpThreadPool.exe
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\bin\Debug\net6.0\CSharpThreadPool.deps.json
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\bin\Debug\net6.0\CSharpThreadPool.runtimeconfig.json
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\bin\Debug\net6.0\CSharpThreadPool.dll
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\bin\Debug\net6.0\CSharpThreadPool.pdb
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.csproj.AssemblyReference.cache
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.GeneratedMSBuildEditorConfig.editorconfig
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.AssemblyInfoInputs.cache
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.AssemblyInfo.cs
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.csproj.CoreCompileInputs.cache
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.dll
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\refint\CSharpThreadPool.dll
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.pdb
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\CSharpThreadPool.genruntimeconfig.cache
+D:\Fork\CSharpStypeCppThreadPool\CSharpStypeCppThreadPool\CSharpThreadPool\obj\Debug\net6.0\ref\CSharpThreadPool.dll
