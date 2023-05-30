@@ -21,6 +21,9 @@
     <ClCompile Include="src\example_3_condition_variable.cpp">
       <Filter>src\example</Filter>
     </ClCompile>
+    <ClCompile Include="src\example_4_semaphore.cpp">
+      <Filter>src\example</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\example_1_thread_create.h">
@@ -30,6 +33,9 @@
       <Filter>src\example</Filter>
     </ClInclude>
     <ClInclude Include="src\example_3_condition_variable.h">
+      <Filter>src\example</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example_4_semaphore.h">
       <Filter>src\example</Filter>
     </ClInclude>
   </ItemGroup>
