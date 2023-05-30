@@ -9,9 +9,12 @@ namespace ThreadPoolTest
     {
         static void Main(string[] args)
         {
-            ConcurrentQueueTest concurrentQueueTest = new ConcurrentQueueTest();
+            // ConcurrentQueueTest concurrentQueueTest = new ConcurrentQueueTest();
+            // concurrentQueueTest.Run();
 
-            concurrentQueueTest.Run();
+            ResetEventTest resetEventTest = new ResetEventTest();
+            resetEventTest.Run();
+
             /*
             WaitHandle[] waitHandles = new WaitHandle[]
             {
