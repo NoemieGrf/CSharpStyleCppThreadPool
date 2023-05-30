@@ -1,56 +1,96 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
+/*
+ * ConcurrentQueue 线程安全队列
+ */
+
 namespace CSharpThreadPool
 {
-    internal class ConcurrentQueueTest
+    public class ConcurrentQueueTest
     {
-        ConcurrentQueue<int> _concurrentQueue = new ConcurrentQueue<int>();
+        private Queue<int> _unsafeQueue = new Queue<int>();
+        private ConcurrentQueue<int> _safeQueue = new ConcurrentQueue<int>();
 
         public void Run()
         {
-            Thread thread1 = new Thread(ThreadWrite1);
-            Thread thread2 = new Thread(ThreadWrite2);
-            Thread threadRead = new Thread(ThreadRead);
+            Console.WriteLine("Thread Not Safe Queue: ");
 
-            thread1.Start();
-            thread2.Start();
-            threadRead.Start();
+            Thread unsafeThread1 = new Thread(NotSafeThreadWrite1);
+            Thread unsafeThread2 = new Thread(NotSafeThreadWrite2);
 
-            thread1.Join();
-            thread2.Join();
-            threadRead.Join();
-        }
+            unsafeThread1.Start();
+            unsafeThread2.Start();
 
-        private void ThreadWrite1()
-        {
-            for (int i = 0; i < 100; ++i)
+            unsafeThread1.Join();
+            unsafeThread2.Join();
+
+            while (_unsafeQueue.Count > 0)
             {
-                _concurrentQueue.Enqueue(i);
-                Thread.Sleep(100);
+                if (_unsafeQueue.TryDequeue(out var number))
+                {
+                    Console.Write(number);
+                    Console.Write(' ');
+                }
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Thread Safe Queue: ");
+
+            Thread safeThread1 = new Thread(SafeThreadWrite1);
+            Thread safeThread2 = new Thread(SafeThreadWrite2);
+
+            safeThread1.Start();
+            safeThread2.Start();
+
+            safeThread1.Join();
+            safeThread2.Join();
+
+            while (_safeQueue.Count > 0)
+            {
+                if (_safeQueue.TryDequeue(out var number))
+                {
+                    Console.Write(number);
+                    Console.Write(' ');
+                }
             }
         }
 
-        private void ThreadWrite2()
+        private void NotSafeThreadWrite1()
         {
-            for (int i = 101; i < 200; ++i)
+            for (int i = 0; i < 10; ++i)
             {
-                _concurrentQueue.Enqueue(i);
+                _unsafeQueue.Enqueue(i);
                 Thread.Sleep(50);
             }
         }
 
-        private void ThreadRead()
+        private void NotSafeThreadWrite2()
         {
-            while (_concurrentQueue.Count > 0)
+            for (int i = 0; i < 10; ++i)
             {
-                if (_concurrentQueue.TryDequeue(out var number))
-                {
-                    Console.WriteLine(number);
-                    Thread.Sleep(150);
-                }
+                _unsafeQueue.Enqueue(i);
+                Thread.Sleep(50);
             }
-            
+        }
+
+        private void SafeThreadWrite1()
+        {
+            for (int i = 0; i < 10; ++i)
+            {
+                _safeQueue.Enqueue(i);
+                Thread.Sleep(50);
+            }
+        }
+
+        private void SafeThreadWrite2()
+        {
+            for (int i = 0; i < 10; ++i)
+            {
+                _safeQueue.Enqueue(i);
+                Thread.Sleep(50);
+            }
         }
     }
 }
