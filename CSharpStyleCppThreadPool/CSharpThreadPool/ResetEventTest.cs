@@ -1,6 +1,6 @@
 ﻿
 
-namespace CSharpThreadPool
+namespace CSharpThread
 {
     public class ResetEventTest
     {

@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
  * ConcurrentQueue 线程安全队列
  */
 
-namespace CSharpThreadPool
+namespace CSharpThread
 {
     public class ConcurrentQueueTest
     {

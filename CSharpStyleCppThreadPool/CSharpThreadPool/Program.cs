@@ -1,9 +1,9 @@
 ﻿
-using CSharpThreadPool;
+
 using System;
 using System.Threading;
 
-namespace ThreadPoolTest
+namespace CSharpThread
 {
     class Program
     {
@@ -12,8 +12,11 @@ namespace ThreadPoolTest
             // ConcurrentQueueTest concurrentQueueTest = new ConcurrentQueueTest();
             // concurrentQueueTest.Run();
 
-            ResetEventTest resetEventTest = new ResetEventTest();
-            resetEventTest.Run();
+            // ResetEventTest resetEventTest = new ResetEventTest();
+            // resetEventTest.Run();
+
+            ThreadPoolTest threadPoolTest = new ThreadPoolTest();
+            threadPoolTest.Run();
 
             /*
             WaitHandle[] waitHandles = new WaitHandle[]
