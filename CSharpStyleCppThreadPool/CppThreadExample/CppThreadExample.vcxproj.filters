@@ -15,9 +15,15 @@
     <ClCompile Include="src\example_1_thread_create.cpp">
       <Filter>src\example</Filter>
     </ClCompile>
+    <ClCompile Include="src\example_2_atomic_mutex.cpp">
+      <Filter>src\example</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\example_1_thread_create.h">
+      <Filter>src\example</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example_2_atomic_mutex.h">
       <Filter>src\example</Filter>
     </ClInclude>
   </ItemGroup>

@@ -79,9 +79,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\example_1_thread_create.cpp" />
+    <ClCompile Include="src\example_2_atomic_mutex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\example_1_thread_create.h" />
+    <ClInclude Include="src\example_2_atomic_mutex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

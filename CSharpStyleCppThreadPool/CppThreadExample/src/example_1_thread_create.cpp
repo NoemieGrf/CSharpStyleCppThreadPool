@@ -46,7 +46,7 @@ namespace Example_1
 		constTestClass.PrintValue();
 	}
 
-	void Run()
+	void VoidThreadCreate()
 	{
 		printf("Void Thread Create: \n");
 
@@ -62,6 +62,10 @@ namespace Example_1
 		voidThread2.join();
 
 		printf("\n");
+	}
+
+	void ParameterThreadCreate()
+	{
 		printf("Parameter Thread Create: \n");
 
 		std::thread parameterThread1(ParameterThreadJob, 1, 5);
@@ -77,6 +81,10 @@ namespace Example_1
 		parameterThread5.join();
 
 		printf("\n");
+	}
+
+	void ReferenceParameterThreadCreate()
+	{
 		printf("Reference Parameter Thread Create: \n");
 
 		TestClass testCalss(1, 2, 3);
@@ -86,11 +94,18 @@ namespace Example_1
 		testCalssConst.PrintValue();
 
 		std::thread referenceParameterThread(
-			ReferenceParameterThreadJob, 
+			ReferenceParameterThreadJob,
 			std::ref(testCalss),
 			std::cref(testCalssConst));
 
 		referenceParameterThread.join();
+	}
+
+	void Run()
+	{
+		VoidThreadCreate();
+		ParameterThreadCreate();
+		ReferenceParameterThreadCreate();
 
 		// thread不join或者detach的话，结束的时候会异常
 	}
