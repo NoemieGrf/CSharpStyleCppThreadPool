@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{0e052920-dde1-4e91-81fc-44971065adfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\example">
+      <UniqueIdentifier>{2c5e5114-90d1-4877-bdd2-045b0817db7e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example_1_thread_create.cpp">
+      <Filter>src\example</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\example_1_thread_create.h">
+      <Filter>src\example</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

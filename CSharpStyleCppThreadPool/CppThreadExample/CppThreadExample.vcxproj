@@ -13,10 +13,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{162e66a6-6dfb-4ef7-b6ce-fdd6b2013953}</ProjectGuid>
-    <RootNamespace>CSharpStypeCppThreadPool</RootNamespace>
+    <ProjectGuid>{18defc5d-946d-4532-861e-2bbc752d181d}</ProjectGuid>
+    <RootNamespace>CppThreadExample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>CSharpStyleCppThreadPool</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -79,6 +78,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\example_1_thread_create.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\example_1_thread_create.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

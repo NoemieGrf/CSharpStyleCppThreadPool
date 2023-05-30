@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpThreadPool", "CSharpT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CSharpStyleCppThreadPool", "CSharpStyleCppThreadPool\CSharpStypeCppThreadPool.vcxproj", "{162E66A6-6DFB-4EF7-B6CE-FDD6B2013953}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppThreadExample", "CppThreadExample\CppThreadExample.vcxproj", "{18DEFC5D-946D-4532-861E-2BBC752D181D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{162E66A6-6DFB-4EF7-B6CE-FDD6B2013953}.Debug|x64.Build.0 = Debug|x64
 		{162E66A6-6DFB-4EF7-B6CE-FDD6B2013953}.Release|x64.ActiveCfg = Release|x64
 		{162E66A6-6DFB-4EF7-B6CE-FDD6B2013953}.Release|x64.Build.0 = Release|x64
+		{18DEFC5D-946D-4532-861E-2BBC752D181D}.Debug|x64.ActiveCfg = Debug|x64
+		{18DEFC5D-946D-4532-861E-2BBC752D181D}.Debug|x64.Build.0 = Debug|x64
+		{18DEFC5D-946D-4532-861E-2BBC752D181D}.Release|x64.ActiveCfg = Release|x64
+		{18DEFC5D-946D-4532-861E-2BBC752D181D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
