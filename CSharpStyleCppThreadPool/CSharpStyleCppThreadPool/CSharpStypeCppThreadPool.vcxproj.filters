@@ -9,5 +9,16 @@
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\thread_pool.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent_queue.hpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\thread_pool.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

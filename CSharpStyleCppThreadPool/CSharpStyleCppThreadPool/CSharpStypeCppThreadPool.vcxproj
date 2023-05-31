@@ -79,6 +79,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\concurrent_queue.hpp" />
+    <ClCompile Include="src\thread_pool.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\thread_pool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
