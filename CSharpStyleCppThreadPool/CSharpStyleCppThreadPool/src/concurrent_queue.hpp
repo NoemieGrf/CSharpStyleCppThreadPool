@@ -17,32 +17,35 @@ namespace Grf
         {
         }
         
-        void Push(T data)
+        void Push(T* pData)
         {
             std::lock_guard lockGuard(_mutex);
-            _queue.push(std::move(data));
+            _queue.push(pData);
             _condVar.notify_one();
         }
         
-        void WaitAndPop(T& value)
+        T* WaitAndPop()
         {
             std::unique_lock lockGuard(_mutex);
-            _condVar.wait(lockGuard, [this]{
+            _condVar.wait(lockGuard, [this]
+            {
                 return !_queue.empty();
             });
             
-            value = std::move(_queue.front());
+            auto value = _queue.front();
             _queue.pop();
+            return value;
         }
-        
-        bool TryPop(T& value)
+
+        bool TryPop(T** result)
         {
             std::lock_guard lockGuard(_mutex);
             if (_queue.empty())
                 return false;
-            
-            value = std::move(_queue.front());
+
+            auto value = _queue.front();
             _queue.pop();
+            *result = value;
             return true;
         }
         
@@ -54,8 +57,50 @@ namespace Grf
 
     private:
         mutable std::mutex _mutex;  // mutable for const function
-        std::queue<T> _queue;
+        std::queue<T*> _queue;
         std::condition_variable _condVar;
     };
 
+    template<typename T>
+    class CasConcurrentQueue
+    {
+    private:
+        struct Node
+        {
+            T* data;
+            std::atomic<Node*> next;
+            
+            Node(T* data_) : data(data_)
+            {
+            }
+        };
+        
+    public:
+        void Push(T* data)
+        {
+            Node newNode = new Node(data);
+            Node* currentTail = _tail.load();
+            while (!currentTail->next.compare_exchange_weak(nullptr, &newNode))
+            {
+                // ...
+            }
+            
+            _tail.compare_exchange_weak(currentTail, &newNode);
+        }
+        
+        T* Pop()
+        {
+            Node* currentHead = _head.load();
+            while (currentHead && !_head.compare_exchange_weak(currentHead, currentHead->next))
+            {
+                currentHead = _head.load();
+            }
+            
+            return currentHead ? currentHead->data : nullptr;
+        }
+
+    private:
+        std::atomic<Node*> _head;
+        std::atomic<Node*> _tail;
+    };
 }
