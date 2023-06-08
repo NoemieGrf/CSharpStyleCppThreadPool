@@ -17,14 +17,14 @@ namespace Grf
         {
         }
         
-        void Push(T* pData)
+        void Enqueue(T pData)
         {
             std::lock_guard lockGuard(_mutex);
             _queue.push(pData);
             _condVar.notify_one();
         }
         
-        T* WaitAndPop()
+        T WaitDequeue()
         {
             std::unique_lock lockGuard(_mutex);
             _condVar.wait(lockGuard, [this]
@@ -37,7 +37,7 @@ namespace Grf
             return value;
         }
 
-        bool TryPop(T** result)
+        bool TryDequeue(T* result)
         {
             std::lock_guard lockGuard(_mutex);
             if (_queue.empty())
@@ -57,7 +57,7 @@ namespace Grf
 
     private:
         mutable std::mutex _mutex;  // mutable for const function
-        std::queue<T*> _queue;
+        std::queue<T> _queue;
         std::condition_variable _condVar;
     };
 
@@ -76,7 +76,7 @@ namespace Grf
         };
         
     public:
-        void Push(T* data)
+        void Enqueue(T* data)
         {
             Node newNode = new Node(data);
             Node* currentTail = _tail.load();
@@ -88,7 +88,7 @@ namespace Grf
             _tail.compare_exchange_weak(currentTail, &newNode);
         }
         
-        T* Pop()
+        T* Dequeue()
         {
             Node* currentHead = _head.load();
             while (currentHead && !_head.compare_exchange_weak(currentHead, currentHead->next))
@@ -103,4 +103,6 @@ namespace Grf
         std::atomic<Node*> _head;
         std::atomic<Node*> _tail;
     };
+
+
 }
