@@ -64,44 +64,75 @@ namespace Grf
     template<typename T>
     class CasConcurrentQueue
     {
-    private:
         struct Node
         {
-            T* data;
+            T data;
             std::atomic<Node*> next;
             
-            Node(T* data_) : data(data_)
+            Node(T data_) : data(data_)
             {
             }
         };
         
     public:
-        void Enqueue(T* data)
+        void Enqueue(T data)
         {
-            Node newNode = new Node(data);
-            Node* currentTail = _tail.load();
-            while (!currentTail->next.compare_exchange_weak(nullptr, &newNode))
+            Node node = new Node{ data };
+
+            Node* head = _head.load();
+            Node* tail = _tail.load();
+
+            while (head == nullptr && tail == nullptr)
             {
-                // ...
+                
             }
             
-            _tail.compare_exchange_weak(currentTail, &newNode);
+            Node* currentTail = _tail.load();
+            
+            while (true)
+            {
+                if (currentTail->next.compare_exchange_weak(nullptr, &node))
+                    break;
+
+                // update current tail
+                currentTail = _tail.load();
+            }
+            
+            _tail.compare_exchange_weak(currentTail, &node);
         }
         
-        T* Dequeue()
+        bool TryDequeue(T* result)
         {
             Node* currentHead = _head.load();
-            while (currentHead && !_head.compare_exchange_weak(currentHead, currentHead->next))
+
+            if (currentHead == nullptr)
+                return false;
+
+            while (true)
             {
+                if (_head.compare_exchange_weak(currentHead, currentHead->next))
+                    break;
+
+                // update current head
                 currentHead = _head.load();
             }
+
+            if (currentHead == nullptr)
+                return false;
+
+            *result = currentHead->data;
+            return true;
+        }
+
+        bool Empty() const
+        {
             
-            return currentHead ? currentHead->data : nullptr;
         }
 
     private:
-        std::atomic<Node*> _head;
-        std::atomic<Node*> _tail;
+        std::atomic<Node*> _head = nullptr;
+        std::atomic<Node*> _tail = nullptr;
+        size_t _count = 0;
     };
 
 
