@@ -12,7 +12,7 @@ void TestLockConcurrentQueue()
 
 	bool producerFinishWork = false;
 
-	auto producerFunc = [&q](int id)
+	auto producerFunc = [&q](const int id)
 	{
 		for (int i = 0; i < 100; i++)
 		{
